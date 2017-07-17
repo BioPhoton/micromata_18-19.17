@@ -1,0 +1,13 @@
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['./flight-search']">Search Flight</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['flight-edit', 1, { detailMode: true }]">Edit Flight</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['flight-bookings']">Booking</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

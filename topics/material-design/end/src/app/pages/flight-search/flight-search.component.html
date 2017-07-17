@@ -1,0 +1,39 @@
+<md-card>
+
+  <md-card-title>
+    Search for Flights
+  </md-card-title>
+
+  <md-card-content>
+
+    <form [formGroup]="searchForm">
+      <md-input-container>
+        <input placeholder="From" name="from"
+          [formControlName]="'from'"
+          mdInput mdTooltip="Test for from field">
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput placeholder="To"
+          [formControlName]="'to'" name="to">
+      </md-input-container>
+
+
+      <md-input-container>
+        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+        <button mdSuffix [mdDatepickerToggle]="picker"></button>
+      </md-input-container>
+      <md-datepicker #picker></md-datepicker>
+    </form>
+
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button [color]="'warn'">
+      Card Action
+      <md-icon>home</md-icon>
+    </button>
+  </md-card-actions>
+
+</md-card>
+

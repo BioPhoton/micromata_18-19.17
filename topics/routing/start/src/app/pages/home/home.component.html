@@ -1,0 +1,6 @@
+<p>Willkommen {{userName}}</p>
+
+<b>Login is required!</b> <br/>
+
+<button class="btn btn-default" *ngIf="!isLoggedIn" (click)="login()">Login</button>
+<button class="btn btn-default" *ngIf="isLoggedIn" (click)="logout()">Logout</button>

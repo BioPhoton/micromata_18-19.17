@@ -1,0 +1,9 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <div class="btn btn-secondary" [class.disabled]="disabled || value <= 1"
+    (click)="decrement()">-
+  </div>
+  <div class="btn btn-secondary disabled">{{value}}</div>
+  <div class="btn btn-secondary" [class.disabled]="disabled"
+    (click)="increment()">+
+  </div>
+</div>

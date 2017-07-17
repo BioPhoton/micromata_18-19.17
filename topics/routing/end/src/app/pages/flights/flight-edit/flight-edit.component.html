@@ -1,0 +1,7 @@
+<h1>Edit Filght ID: {{flightId}} with DetailMode: {{detailMode}}</h1>
+
+<pre>{{flight | json}}</pre>
+
+<button class="btn primary" (click)="navigateToHome()">Zurück zur Startseite</button>
+
+<leave-route-warning *ngIf="exitWarning.show" [subjectName]="'Flight Edit'" (decision)="decided($event)"></leave-route-warning>

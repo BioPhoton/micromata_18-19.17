@@ -1,0 +1,25 @@
+<div class="card" style="height: 100%;">
+  <div class="card-header">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="card-block">
+
+    <div *ngIf="(fsso.selectedFlights$ | async).length > 0; else list" >
+      <table class="table table-condensed">
+        <tr *ngFor="let f of fsso.selectedFlights$ | async">
+          <td><b>{{f?.from}} - {{f?.to}}</b></td>
+          <td>{{f?.date | date:'dd.MM.yyyy HH:mm' }}</td>
+        </tr>
+      </table>
+    </div>
+    <ng-template #list>
+      No flights selected...
+    </ng-template>
+
+  </div>
+
+  <div class="card-footer">
+    <ng-content select="button"></ng-content>
+  </div>
+</div>

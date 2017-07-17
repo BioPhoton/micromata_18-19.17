@@ -1,0 +1,77 @@
+<h1>IFlight Edit Dynamic
+  <small>ID:{{id$ | async}}</small>
+</h1>
+
+<div class="card" *ngIf="message">
+  {{message}}
+</div>
+<div class="card" *ngIf="flight">
+  <div class="card-block">
+
+    <div [formGroup]="formGroup">
+      <div class="form-group" *ngFor="let field of config">
+        <label>{{field.label}}</label>
+
+        <my-control
+          *ngIf="field.controlType === 'myControl'"
+          formControlName="{{field.name}}">
+        </my-control>
+
+        <input *ngIf="field.controlType !== 'myControl'"
+               type="{{field.type}}"
+               class="form-control"
+               name="from"
+               formControlName="{{field.name}}">
+
+
+        <div class="text-danger" *ngIf="!formGroup.get(field.name).valid  && formGroup.get(field.name).dirty">
+          Es ist ein Validierungsfehler aufgetreten!
+        </div>
+
+        <div class="text-danger"
+             *ngIf="formGroup.get(field.name).hasError('required') && formGroup.get(field.name).dirty">
+          Pflichtfeld
+        </div>
+
+        <div class="text-danger"
+             *ngIf="formGroup.get(field.name).hasError('minlength') && formGroup.get(field.name).dirty">
+          Minimal 4 Zeichen
+        </div>
+
+        <div class="text-danger"
+             *ngIf="formGroup.get(field.name).hasError('maxlength') && formGroup.get(field.name).dirty">
+          Maximal 15 Zeichen
+        </div>
+
+        <div class="text-danger"
+             *ngIf="formGroup.get(field.name).hasError('pattern') && formGroup.get(field.name).dirty">
+          Nur Buchstaben und Zahlen
+        </div>
+
+        <div class="text-danger"
+             *ngIf="formGroup.get(field.name).hasError('cityValidation') && formGroup.get(field.name).dirty">
+          Diese Stadt wird nicht angeflogen!
+        </div>
+
+        <div class="text-danger"
+             *ngIf="formGroup.get(field.name).hasError('asyncCityValidation') && formGroup.get(field.name).dirty">
+          Für diese Stadt ist kein Flug mehr verfügbar!
+        </div>
+
+        <div class="text-warning" *ngIf="formGroup.get(field.name).pending && formGroup.get(field.name).dirty">
+          <marquee>
+            Validierung wird ausgeführt!
+          </marquee>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <button (click)="save(formGroup)" class="btn btn-primary">Save
+        </button>
+      </div>
+
+
+    </div>
+  </div>
+</div>

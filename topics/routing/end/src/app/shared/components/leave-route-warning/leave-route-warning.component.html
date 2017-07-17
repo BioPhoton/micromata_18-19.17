@@ -1,0 +1,18 @@
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Do you really want to leave {{subjectName}}?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                (click)="cancel()" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You risk loosing important data. Do you really want to leave the page?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="card-link" (click)="confirm()">Yes I want to Leave</button>
+        <button class="card-link" (click)="cancel()">Cancle</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+@import "~@angular/material/_theming";
+
+.r1 {
+  height: 300px;
+
+  .c1 {
+    background-color: mat-color(mat-palette($mat-blue), 1, 1);
+  }
+
+  .c2 {
+    background-color: mat-color(mat-palette($mat-green), 1, 1);
+  }
+
+  .c3 {
+    background-color: mat-color(mat-palette($mat-purple), 1, 1);
+  }
+
+}

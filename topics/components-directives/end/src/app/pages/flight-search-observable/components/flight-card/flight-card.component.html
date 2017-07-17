@@ -1,0 +1,10 @@
+<div class="card" id="id"
+     [ngClass]="selected?'card-info':''">
+  <div class="card-block">
+    <b>{{flight.from}} - {{flight.to}}</b>
+    <p>
+      {{flight.date | date:'dd.MM.yyyy'}}
+    </p>
+    <button class="btn btn-secondary" (click)="toggleSelected()">{{selected?'Entfernen':'Hinzufügen'}}</button>
+  </div>
+</div>

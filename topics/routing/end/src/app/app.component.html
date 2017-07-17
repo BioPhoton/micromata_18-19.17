@@ -1,0 +1,48 @@
+<div class="has-footer container">
+  <nav class="navbar navbar-toggleable-xl navbar-default bg-faded">
+
+    <a class="navbar-brand">
+      <i *ngIf="showSpinner" class="fa fa-spinner fa-spin"></i>
+      MyFlight</a>
+    <ul class="nav nav-pills">
+      <li class="nav-link">
+        <a class="nav-link" [routerLink]="[{outlets: {bottom:'flights-history/1'}}]">Show History</a>
+      </li>
+      <li class="nav-link">
+        <a class="nav-link" [routerLink]="[{outlets: {bottom:null}}]">Hide History</a>
+      </li>
+    </ul>
+
+  </nav>
+  <div class="row">
+    <div class="col-3">
+      <ul class="nav nav-pills flex-column bg-faded">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['flights']">Flights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['lazy-page']">Lazy Module</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <router-outlet></router-outlet>
+      <router-outlet name="bottom"></router-outlet>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer bg-faded">
+  <div class="container">
+    <div class="row ">
+      <div class="col">
+        <p>Footer</p>
+      </div>
+    </div>
+  </div>
+</div>

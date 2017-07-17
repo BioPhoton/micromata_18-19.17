@@ -1,0 +1,98 @@
+<h1>
+  Flug Suchen
+</h1>
+
+<div class="row mb-4">
+  <div class="col-6">
+
+    <div class="card">
+      <div class="card-block">
+
+        <div class="form-group row">
+          <label for="from" class="col-2 col-form-label">From:</label>
+          <div class="col-10">
+            <input class="form-control" type="text" id="from">
+            <small class="description">from: {{from}}</small>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="to" class="col-2 -col-form-label">To:</label>
+          <div class="col-10">
+            <input class="form-control" type="text" id="to">
+            <small class="description">to: {{to}}</small>
+          </div>
+        </div>
+
+        <button
+          (click)="search(from, to)"
+          class="btn btn-primary">
+          Search
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-6">
+    <div class="card" style="height: 100%;">
+      <div class="card-header">
+        <p>
+          Wahrenkorb
+        </p>
+      </div>
+
+      <div class="card-block">
+
+        <pre>{{this.selectedFlightIds | json}}</pre>
+
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-danger">Löschen</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row" *ngIf="flights.length > 0">
+  <div class="col">
+    <button class="btn btn-secondary">Alles Wechseln</button>
+  </div>
+</div>
+
+
+<div class="row">
+<div class="col">
+  <h2>Verfügbare Flüge</h2>
+
+  <div class="card" *ngIf="flights.length > 0">
+    <table class="table table-condensed">
+      <tr *ngFor="let f of flights">
+        <td>{{f.id}}</td>
+        <td>{{f.from}}</td>
+        <td>{{f.to}}</td>
+        <td>{{f.date | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td><a class="btn btn-outline-secondary btn-default">{{selectedFlightIds[f.id]?'Entfernen':'Hinzufügen'}}</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!--
+
+<div class="row" *ngIf="flights.length > 0">
+  <div class="col col-lg-3 col-md-4 col-sm-6 col-xs-12"
+       *ngFor="let f of flights">
+    <pre>{{f | json}}</pre>
+  </div>
+</div>
+
+-->
+

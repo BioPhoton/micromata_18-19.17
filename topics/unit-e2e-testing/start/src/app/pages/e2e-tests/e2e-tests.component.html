@@ -1,0 +1,49 @@
+<h1>E2E Tests</h1>
+
+
+<div class="card">
+  <div class="card-block">
+    Logged in State: <b id="login-state">{{loginState ? 'Eingelogged' : 'Ausgelogged'}}</b>
+  </div>
+  <div class="card-block">
+    <form id="my-form" [formGroup]="myForm">
+
+      <div class="form-group">
+        <label>Username:</label>
+        <input name="username"
+          id="my-form--username"
+          type="text"
+          formControlName="username"
+          class="form-control">
+        <small class="form-text text-danger" *ngIf="myForm.get('username').hasError('required') && myForm.get('username').touched">
+          Pflichtfeld
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label>Password:</label>
+        <input
+          id="my-form--password"
+          class="form-control"
+          type="password"
+          name="password"
+          formControlName="password">
+        <small class="form-text text-danger" *ngIf="myForm.get('password').hasError('required') && myForm.get('password').touched">
+          Pflichtfeld
+        </small>
+      </div>
+
+      <div class="form-group">
+        <button id="my-form--login-button"
+          class="btn btn-primary"
+          (click)="login()">
+          Senden
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<button id="link-go-to-unit-tests" class="btn btn-lg btn-link">Go to Unit Tests
+</button>

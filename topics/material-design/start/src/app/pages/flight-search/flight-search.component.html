@@ -1,0 +1,11 @@
+<h1>Search for Flights</h1>
+<form [formGroup]="searchForm">
+
+  <input placeholder="From" name="from" [formControlName]="'from'">
+
+  <input placeholder="To" [formControlName]="'to'" name="to">
+
+  <input type="date" placeholder="Choose a date" [formControlName]="'date'">
+
+</form>
+

@@ -1,0 +1,102 @@
+<h1>IFlight Edit Template
+  <small>ID:{{id}}</small>
+</h1>
+
+<div class="card" *ngIf="message">
+  {{message}}
+</div>
+<div class="card" *ngIf="flight">
+
+  <div class="card-block">
+
+    <form #f="ngForm" routeMultiValidator>
+
+      <div class="form-group">
+        <label>Id:</label>
+        <input name="id" [(ngModel)]="flight.id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Von:</label>
+        <input class="form-control"
+               name="from"
+               [(ngModel)]="flight.from"
+               required
+               minlength="3"
+               maxlength="15"
+               pattern="[\d\wöäüßÖÄÜ]+"
+               cityValidation
+               asyncCityValidation>
+
+        <div class="text-danger" *ngIf="!f?.controls?.from?.valid  && f?.controls?.from?.dirty">
+          Es ist ein Validierungsfehler aufgetreten!
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.hasError('required') && f?.controls?.from?.dirty">
+          Pflichtfeld
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.hasError('minlength') && f?.controls?.from?.dirty">
+          Minimal 3 Zeichen
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.hasError('maxlength') && f?.controls?.from?.dirty">
+          Maximal 15 Zeichen
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.hasError('pattern') && f?.controls?.from?.dirty">
+          Nur Buchstaben und Zahlen
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.hasError('cityValidation') && f?.controls?.from?.dirty">
+          Diese Stadt wird nicht angeflogen!
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.hasError('asyncCityValidation') && f?.controls?.from?.dirty">
+          Für diese Stadt ist kein Flug mehr verfügbar!
+        </div>
+
+        <div class="text-danger" *ngIf="f?.controls?.from?.pending && f?.controls?.from?.dirty">
+
+          <marquee>
+            Validierung wird ausgeführt!
+          </marquee>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Nach:</label>
+        <input name="to" [(ngModel)]="flight.to" class="form-control"
+               [cityValidation]="['Hamburg','Zürich','Wien']">
+      </div>
+
+      <div class="text-danger" *ngIf="f?.controls?.to?.hasError('cityValidation') && f?.controls?.to?.dirty">
+        Diese Stadt wird nicht angeflogen!
+      </div>
+
+      <div class="form-group">
+        <label>Date:</label>
+        <input name="date" [(ngModel)]="flight.date" class="form-control">
+      </div>
+
+      <div class="text-danger" *ngIf="f?.hasError('routeValid') && f?.dirty">
+        Es muss VON und NACH gesetzt sein und unterschiedlich sein.
+      </div>
+
+      <div class="text-warning" *ngIf="f?.pending && f?.dirty">
+        <marquee>
+          Validierung wird ausgeführt!
+        </marquee>
+      </div>
+
+      <br/>
+
+      <div class="form-group">
+        <button (click)="save(f)" class="btn btn-primary" [disabled]="f.invalid && f.dirty">Save</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

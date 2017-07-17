@@ -1,0 +1,91 @@
+<h1>IFlight Edit Template
+  <small>ID:{{id}}</small>
+</h1>
+
+<div class="card" *ngIf="message">
+  {{message}}
+</div>
+<div class="card" *ngIf="flight">
+
+  <form>
+
+    <div class="form-group">
+      <label>Id:</label>
+      <input name="id" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Von:</label>
+      <input class="form-control"
+             name="from">
+
+      <div class="text-danger" >
+        Es ist ein Validierungsfehler aufgetreten!
+      </div>
+
+      <div class="text-danger">
+        Pflichtfeld
+      </div>
+
+      <div class="text-danger">
+        Minimal 3 Zeichen
+      </div>
+
+      <div class="text-danger">
+        Maximal 15 Zeichen
+      </div>
+
+      <div class="text-danger">
+        Nur Buchstaben und Zahlen
+      </div>
+
+      <div class="text-danger">
+        Diese Stadt wird nicht angeflogen!
+      </div>
+
+      <div class="text-danger">
+        Für diese Stadt ist kein Flug mehr verfügbar!
+      </div>
+
+      <div class="text-warning">
+
+        <marquee>
+          Validierung wird ausgeführt!
+        </marquee>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Nach:</label>
+      <input name="to" class="form-control">
+    </div>
+
+    <div class="text-danger">
+      Diese Stadt wird nicht angeflogen!
+    </div>
+
+    <div class="form-group">
+      <label>Date:</label>
+      <input name="date" class="form-control">
+    </div>
+
+    <div class="text-danger">
+      Es muss VON und NACH gesetzt sein und unterschiedlich sein.
+    </div>
+
+    <div class="text-warning">
+      <marquee>
+        Validierung wird ausgeführt!
+      </marquee>
+    </div>
+
+    <br/>
+
+    <div class="form-group">
+      <button (click)="save(f)" class="btn btn-primary">Save</button>
+    </div>
+
+  </form>
+
+</div>
