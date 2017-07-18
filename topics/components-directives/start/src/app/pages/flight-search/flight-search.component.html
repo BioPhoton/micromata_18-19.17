@@ -69,7 +69,7 @@
 <div class="col">
   <h2>Verfügbare Flüge</h2>
 
-  <div class="card" *ngIf="flights.length > 0">
+  <div class="card" *ngIf="flights.length">
     <table class="table table-condensed">
       <tr *ngFor="let f of flights">
         <td>{{f.id}}</td>
